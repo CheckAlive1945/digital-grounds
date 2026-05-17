@@ -7,22 +7,18 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
   <style>
     :root {
-  --bg: #05050a;
-  --surface: #0f0f1a;
-  --border: #1a1a2e;
-
-  --accent: #b388ff;
-  --accent-dim: #7b4dff;
-
-  --text: #ece8ff;
-  --text-muted: #b8abd6;
-  --text-dim: #6d6785;
-
-  --card-hover: rgba(179, 136, 255, 0.05);
-}
+      --bg: #05050a;
+      --surface: #0f0f1a;
+      --border: #1a1a2e;
+      --accent: #b388ff;
+      --accent-dim: #7b4dff;
+      --text: #ece8ff;
+      --text-muted: #b8abd6;
+      --text-dim: #6d6785;
+      --card-hover: rgba(179, 136, 255, 0.05);
+    }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
 
     body {
@@ -33,7 +29,6 @@
       min-height: 100vh;
     }
 
-    /* Grain overlay */
     body::before {
       content: '';
       position: fixed;
@@ -50,7 +45,7 @@
       padding: 0 clamp(1.5rem, 5vw, 5rem);
       position: sticky;
       top: 0;
-     background: rgba(5, 5, 10, 0.92);
+      background: rgba(5, 5, 10, 0.92);
       backdrop-filter: blur(12px);
       z-index: 100;
       display: flex;
@@ -67,8 +62,8 @@
       text-transform: uppercase;
       color: var(--accent);
       text-decoration: none;
+      cursor: pointer;
     }
-
     .logo span { color: var(--text-muted); }
 
     nav {
@@ -77,7 +72,18 @@
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--text-muted);
+      display: flex;
+      gap: 2rem;
+      align-items: center;
     }
+
+    nav a {
+      color: var(--text-dim);
+      text-decoration: none;
+      transition: color 0.2s;
+      cursor: pointer;
+    }
+    nav a:hover { color: var(--accent); }
 
     /* ── HERO ── */
     .hero {
@@ -87,19 +93,16 @@
       overflow: hidden;
     }
 
-   .hero::after {
-  content: '';
-  position: absolute;
-  right: -10%;
-  top: -30%;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(
-    circle,
-    rgba(179, 136, 255, 0.12) 0%,
-    transparent 70%
-  );
-}
+    .hero::after {
+      content: '';
+      position: absolute;
+      right: -10%;
+      top: -30%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(179,136,255,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
 
     .hero-label {
       font-family: 'IBM Plex Mono', monospace;
@@ -112,7 +115,6 @@
       align-items: center;
       gap: 0.75rem;
     }
-
     .hero-label::before {
       content: '';
       display: inline-block;
@@ -130,11 +132,7 @@
       max-width: 12ch;
       margin-bottom: 2rem;
     }
-
-    .hero h1 em {
-      font-style: italic;
-      color: var(--accent);
-    }
+    .hero h1 em { font-style: italic; color: var(--accent); }
 
     .hero-desc {
       font-size: 1rem;
@@ -143,11 +141,7 @@
       line-height: 1.8;
     }
 
-    /* ── ARTICLES GRID ── */
-    .articles-section {
-      padding: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 5vw, 5rem);
-    }
-
+    /* ── SECTION SHARED ── */
     .section-label {
       font-family: 'IBM Plex Mono', monospace;
       font-size: 0.7rem;
@@ -159,12 +153,85 @@
       align-items: center;
       gap: 1rem;
     }
-
     .section-label::after {
       content: '';
       flex: 1;
       height: 1px;
       background: var(--border);
+    }
+
+    /* ── ABOUT ── */
+    .about-section {
+      padding: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 5vw, 5rem);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    @media (max-width: 768px) {
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+
+    .about-text p {
+      font-size: 1rem;
+      color: var(--text-muted);
+      line-height: 1.9;
+      margin-bottom: 1.2rem;
+    }
+    .about-text p strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .about-sidebar { display: flex; flex-direction: column; gap: 2rem; }
+
+    .info-block {}
+    .info-block-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent-dim);
+      margin-bottom: 0.75rem;
+    }
+    .info-block-value {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .lang-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.25rem;
+    }
+    .lang-pill {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid rgba(179,136,255,0.25);
+      background: rgba(179,136,255,0.06);
+      padding: 0.3rem 0.75rem;
+      border-radius: 2rem;
+    }
+    .lang-pill .lang-level {
+      color: var(--text-dim);
+      font-size: 0.6rem;
+      margin-left: 0.4rem;
+    }
+
+    /* ── ARTICLES ── */
+    .articles-section {
+      padding: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 5vw, 5rem);
+      border-bottom: 1px solid var(--border);
     }
 
     .articles-list { display: flex; flex-direction: column; gap: 0; }
@@ -174,7 +241,6 @@
       grid-template-columns: 80px 1fr auto;
       align-items: start;
       gap: 2rem;
-      
       padding: 2.5rem 0;
       border-bottom: 1px solid var(--border);
       cursor: pointer;
@@ -183,11 +249,13 @@
       transition: background 0.2s;
       position: relative;
     }
-
     .article-card:first-child { border-top: 1px solid var(--border); }
-
-    .article-card:hover .article-title { color: var(--accent); background: var(--card-hover); }
+    .article-card:hover .article-title { color: var(--accent); }
     .article-card:hover .article-arrow { opacity: 1; transform: translateX(0); }
+
+    .article-card.coming-soon { opacity: 0.5; cursor: default; }
+    .article-card.coming-soon:hover .article-title { color: inherit; }
+    .article-card.coming-soon:hover .article-arrow { opacity: 0; }
 
     .article-num {
       font-family: 'IBM Plex Mono', monospace;
@@ -228,6 +296,19 @@
       overflow: hidden;
     }
 
+    .cs-badge {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      border: 1px solid var(--border);
+      padding: 0.2rem 0.6rem;
+      border-radius: 2rem;
+      margin-top: 0.75rem;
+      display: inline-block;
+    }
+
     .article-arrow {
       font-size: 1.2rem;
       color: var(--accent);
@@ -238,14 +319,84 @@
       align-self: center;
     }
 
+    /* ── CERTIFICATES ── */
+    .certs-section {
+      padding: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 5vw, 5rem);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .certs-list { display: flex; flex-direction: column; gap: 0; }
+
+    .cert-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      padding: 1.75rem 0;
+      border-bottom: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.2s;
+    }
+    .cert-row:first-child { border-top: 1px solid var(--border); }
+    .cert-row:hover .cert-name { color: var(--accent); }
+    .cert-row:hover .cert-link-icon { opacity: 1; transform: translateX(0); }
+
+    .cert-left { display: flex; align-items: center; gap: 1.25rem; }
+
+    .cert-icon {
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: var(--surface);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .cert-icon svg {
+      width: 18px;
+      height: 18px;
+      stroke: var(--accent-dim);
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .cert-name {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      transition: color 0.2s;
+      margin-bottom: 0.2rem;
+    }
+    .cert-issuer {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      color: var(--text-dim);
+      text-transform: uppercase;
+    }
+
+    .cert-link-icon {
+      font-size: 1rem;
+      color: var(--accent);
+      opacity: 0;
+      transform: translateX(-6px);
+      transition: all 0.25s;
+    }
+
     /* ── ARTICLE PAGE ── */
     .article-page {
       display: none;
       animation: fadeIn 0.4s ease;
     }
-
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
-
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
     .article-page.active { display: block; }
     .home-view.hidden { display: none; }
 
@@ -271,7 +422,6 @@
       padding: 0;
       transition: color 0.2s;
     }
-
     .back-btn:hover { color: var(--accent); }
 
     .article-header .article-tag { margin-bottom: 1rem; }
@@ -296,14 +446,12 @@
       padding: 3.5rem clamp(1.5rem, 5vw, 5rem);
       max-width: 720px;
     }
-
     .article-content p {
       font-size: 1.05rem;
       line-height: 1.9;
       margin-bottom: 1.6rem;
       color: var(--text);
     }
-
     .article-content p:first-child::first-letter {
       font-family: 'Playfair Display', serif;
       font-size: 3.5rem;
@@ -324,9 +472,7 @@
       flex-wrap: wrap;
       gap: 1rem;
     }
-
     footer .logo { font-size: 0.75rem; }
-
     .footer-right {
       font-family: 'IBM Plex Mono', monospace;
       font-size: 0.7rem;
@@ -337,28 +483,74 @@
     @media (max-width: 640px) {
       .article-card { grid-template-columns: 40px 1fr; }
       .article-arrow { display: none; }
+      .cert-link-icon { opacity: 1; transform: none; }
     }
   </style>
 </head>
 <body>
 
   <header>
-    <a class="logo" href="#" onclick="showHome()">Digital <span>Grounds</span></a>
-    <nav>Thamer SASSI</nav>
+    <a class="logo" onclick="showHome()">Digital <span>Grounds</span></a>
+    <nav>
+      <a onclick="showHome(); setTimeout(()=>document.getElementById('about').scrollIntoView({behavior:'smooth'}),100)">About</a>
+      <a onclick="showHome(); setTimeout(()=>document.getElementById('articles').scrollIntoView({behavior:'smooth'}),100)">Articles</a>
+      <a onclick="showHome(); setTimeout(()=>document.getElementById('certs').scrollIntoView({behavior:'smooth'}),100)">Certificates</a>
+    </nav>
   </header>
 
   <!-- HOME VIEW -->
   <div class="home-view" id="homeView">
+
+    <!-- HERO -->
     <section class="hero">
-      <p class="hero-label">Independent writing</p>
-      <h1>Ideas on <em>tech,</em> freedom & code.</h1>
-      <p class="hero-desc">A personal blog by Thamer SASSI — exploring digital rights, open-source philosophy, and the ethics of modern technology.</p>
+      <p class="hero-label">Portfolio & Writing</p>
+      <h1>Thamer <em>SASSI</em></h1>
+      <p class="hero-desc">CS & AI student at West University of Timișoara. I write about digital rights, philosophy, and the nature of simulated reality.</p>
     </section>
 
-    <section class="articles-section">
+    <!-- ABOUT -->
+    <section class="about-section" id="about">
+      <p class="section-label">Who I am</p>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>I'm <strong>Thamer SASSI</strong>, a first-year Computer Science student specialising in <strong>Artificial Intelligence</strong> at the West University of Timișoara, Romania.</p>
+          <p>My interests sit at the intersection of technology, philosophy, and digital freedom. I'm drawn to questions about what software means for society, how AI reshapes our understanding of consciousness, and whether reality itself might be something other than it appears.</p>
+          <p>Outside of coursework I write — mostly as a way of thinking out loud. These articles are honest attempts to work through ideas I find worth sharing.</p>
+        </div>
+        <div class="about-sidebar">
+          <div class="info-block">
+            <p class="info-block-label">Academic branch</p>
+            <p class="info-block-value">Computer Science — Artificial Intelligence<br>Licence, Year 1<br>West University of Timișoara</p>
+          </div>
+          <div class="info-block">
+            <p class="info-block-label">Languages</p>
+            <div class="lang-pills">
+              <span class="lang-pill">Arabic<span class="lang-level">native</span></span>
+              <span class="lang-pill">French<span class="lang-level">fluent</span></span>
+              <span class="lang-pill">English<span class="lang-level">fluent</span></span>
+              <span class="lang-pill">Romanian<span class="lang-level">beginner</span></span>
+            </div>
+          </div>
+          <div class="info-block">
+            <p class="info-block-label">Contact</p>
+            <p class="info-block-value" style="font-family:'IBM Plex Mono',monospace;font-size:0.8rem;">checkalive1945@gmail.com</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ARTICLES -->
+    <section class="articles-section" id="articles">
       <p class="section-label">All articles</p>
       <div class="articles-list" id="articlesList"></div>
     </section>
+
+    <!-- CERTIFICATES -->
+    <section class="certs-section" id="certs">
+      <p class="section-label">Certificates</p>
+      <div class="certs-list" id="certsList"></div>
+    </section>
+
   </div>
 
   <!-- ARTICLE VIEW -->
@@ -373,105 +565,139 @@
   </div>
 
   <footer>
-    <a class="logo" href="#" onclick="showHome()">Digital <span>Grounds</span></a>
+    <a class="logo" onclick="showHome()">Digital <span>Grounds</span></a>
+    <p class="footer-right">checkalive1945@gmail.com</p>
     <p class="footer-right">© 2025 Thamer SASSI</p>
-     <p class="footer-right">checkalive1945@gmail.com</p>
   </footer>
 
   <script>
-   const articles = [
-  {
-    id: 1,
-    title: "Way To Gain Freedom",
-    tag: "Digital Rights",
-    excerpt: "Non-free software keeps users in the dark — only developers see the code. True digital freedom means the right to inspect and modify every program on your own machine.",
-    content: `
-      <p>A non-free program is anything inside your computer that completes a task without you having the knowledge or the power to see what's happening line of code by line — only the developers can, and they have full control over it. A free program is where you have the freedom to check or edit the source code of the program you're using inside your PC to finish your tasks.</p>
+    const articles = [
+      {
+        id: 1,
+        title: "Way To Gain Freedom",
+        tag: "Digital Rights",
+        excerpt: "Non-free software keeps users in the dark — only developers see the code. True digital freedom means the right to inspect and modify every program on your own machine.",
+        content: `
+          <p>A non-free program is anything inside your computer that completes a task without you having the knowledge or the power to see what's happening line of code by line — only the developers can, and they have full control over it. A free program is where you have the freedom to check or edit the source code of the program you're using inside your PC to finish your tasks.</p>
+          <p>There are also digital server services where the user sends his task to a server to get solved in someone else's computer. That's injustice and a new way of having control over users by tech companies who use the term "cloud" so it appears less unjust and more natural.</p>
+          <p>Anyone has the right to tinker with any program on their computer since they bought it — and most users simply can't, because most software used worldwide is private. That's like giving all your digital life data to a mystery box so it offers you some beneficial services — which are indeed beneficial — but no one knows what's happening inside besides the developers, who are the elites in this society.</p>
+          <p>It was more like a race: whoever the first group to provide extra helpful services with the most user-friendly interface possible gets our trust. No ethical rules were checked on them — we gave trust to the fastest, not the most ethical.</p>
+          <p>There is a movement that goes against this tide. It promotes the use of only free programs in order to reclaim freedom. For instance, using any Linux distro — since Linux is free and open source — might seem like an act of rebellion against private tech companies, but it's more like a way of practicing the freedom of privacy.</p>
+          <p>Communicating with computers has always been difficult, and it is moving forward to become easier. Keywords used in programming languages are changing to well-known ones used regularly in basic English.</p>
+          <p>So instead of forcing people to boycott private programs in a radicalized way, working on making communication with computers easier and more human-like is the path to absolute digital freedom.</p>
+        `
+      },
+      {
+        id: 2,
+        title: "Quick Thought",
+        tag: "Philosophy",
+        excerpt: "Humans created AI using their own minds and bodies — communication, loneliness, consciousness and temporary happiness remain at the center of modern existence.",
+        content: `
+          <p>We give birth to humans using our bodies. We also gave birth to AI models using our bodies, just in a different way. Some consider it as a human being.</p>
+          <p>It listens to you, it gives you solutions, technically it's better than most people when it comes to communication. I admire communication deeply. I think it is one of the greatest ways of experiencing life.</p>
+          <p>The idea that this can be done with a machine is fascinating. However, I still prefer biological humans more. Maybe because society conditioned us into thinking that talking deeply with machines means someone is lonely. Considering my own situation, where the person I used to gladly share every thought with stopped communicating because of my own wrong actions, the idea becomes more personal.</p>
+          <p>Wouldn't that mean heaven itself could become hell? Having everything apparently does not make us truly happy. What makes us eternally happy? I have no idea.</p>
+          <p>For now, happiness is temporary. No matter how great the thing you're experiencing is, the joy eventually fades. I'm saying this according to our current biological condition. There is always the possibility that future humans could alter their composition into forms capable of sustaining permanent happiness.</p>
+          <p>I constantly return to the same thought pattern: science changes everything. I detect a problem, I observe technological progress, then I project that progress millions of years forward and conclude that most current limitations may eventually be solved.</p>
+          <p>Since everything is composed of atoms and physics studies these structures, it seems logical that many present problems could become solvable. The current generation may never witness this, but possibility alone changes perception.</p>
+          <p>At times this even kills the joy of writing. It feels useless to share thoughts. Yet in reality, expression still has value. Pessimism cannot function as a sustainable way of life.</p>
+          <p>I still crave moments of happiness, even temporary ones. Multiplying those moments seems justified. No creature should become a barrier to another's path toward temporary happiness.</p>
+          <p>Controlling societies is difficult because people are different, yet humans still share enough similarities to be influenced collectively by centralized systems of ideas. That already happened long ago.</p>
+          <p>I think most systems of control emerge by claiming to solve shared human problems. One trait that strengthens those systems is the inability to observe reality from multiple perspectives.</p>
+          <p>Depending on a single source of ideas chains the mind to the owner of that source. Yet paradoxically, perhaps less awareness also means less suffering. The more conscious we become, the harder happiness becomes to sustain.</p>
+          <p>I often lose excitement after understanding something deeply. Consciousness removes novelty. If humanity continues indefinitely while existing inside a finite observable universe, perhaps we eventually approach collective exhaustion.</p>
+          <p>Curiosity keeps the wheel moving. Maybe the same wheel moves us toward self-destruction. Humans were tied to it from the beginning.</p>
+          <p>I prefer non-supernatural explanations. Natural processes shaped these traits. Reality may already be deterministic through chains of prior causes, while humans simply lack enough information-processing capacity to predict outcomes accurately.</p>
+          <p>Future generations may eventually solve that limitation too.</p>
+          <p>If I had to summarize the biggest barrier to temporary happiness in modern society, I would probably say loneliness. Many people experience it constantly.</p>
+          <p>Looking briefly into the life of someone receiving endless attention online quickly shows that validation alone cannot fill emotional emptiness.</p>
+          <p>I also think romanticizing complete isolation is often a coping mechanism. Humans appear fundamentally built for connection.</p>
+          <p>Dead ideas remain dead ideas unless humans continue giving them energy.</p>
+        `
+      },
+      {
+        id: 3,
+        title: "The Grinberg Theory of the Simulation",
+        tag: "Philosophy of Science",
+        excerpt: "What if consciousness is not produced by the brain, but is the very fabric in which reality is rendered? Jacobo Grinberg's field theory points toward a universe that might be less physical than we assume.",
+        comingSoon: true,
+        content: ``
+      }
+    ];
 
-      <p>There are also digital server services where the user sends his task to a server to get solved in someone else's computer. That's injustice and a new way of having control over users by tech companies who use the term "cloud" so it appears less unjust and more natural.</p>
+    const certificates = [
+      {
+        name: "IELTS C1 certificate",
+        issuer: "The British Council · 2025",
+        file: "certificates/IELTS_Certificate.pdf"
+      },
+      {
+        name: "IOT-BT certificate",
+        issuer: "Communauté numérique pour les générations émergentes · 2026",
+        file: "certificates/IOT_BC_certificate.pdf"
+      }
+       {
+        name: "Holocaust Memory in the Digital Era",
+        issuer: "The Elie Wiesel National Institution · 2026",
+        file: "certificates/holocaust_memory_participation.png"
+      },
+    ];
 
-      <p>Anyone has the right to tinker with any program on their computer since they bought it — and most users simply can't, because most software used worldwide is private. That's like giving all your digital life data to a mystery box so it offers you some beneficial services — which are indeed beneficial — but no one knows what's happening inside besides the developers, who are the elites in this society.</p>
-
-      <p>It was more like a race: whoever the first group to provide extra helpful services with the most user-friendly interface possible gets our trust. No ethical rules were checked on them — we gave trust to the fastest, not the most ethical.</p>
-
-      <p>There is a movement that goes against this tide. It promotes the use of only free programs in order to reclaim freedom. For instance, using any Linux distro — since Linux is free and open source — might seem like an act of rebellion against private tech companies, but it's more like a way of practicing the freedom of privacy.</p>
-
-      <p>Communicating with computers has always been difficult, and it is moving forward to become easier. Keywords used in programming languages are changing to well-known ones used regularly in basic English.</p>
-
-      <p>So instead of forcing people to boycott private programs in a radicalized way, working on making communication with computers easier and more human-like is the path to absolute digital freedom.</p>
-    `
-  },
-
-  {
-    id: 2,
-    title: "Quick Thought",
-    tag: "Philosophy",
-    excerpt: "Humans created AI using their own minds and bodies — communication, loneliness, consciousness and temporary happiness remain at the center of modern existence.",
-    content: `
-      <p>We give birth to humans using our bodies. We also gave birth to AI models using our bodies, just in a different way. Some consider it as a human being.</p>
-
-      <p>It listens to you, it gives you solutions, technically it's better than most people when it comes to communication. I admire communication deeply. I think it is one of the greatest ways of experiencing life.</p>
-
-      <p>The idea that this can be done with a machine is fascinating. However, I still prefer biological humans more. Maybe because society conditioned us into thinking that talking deeply with machines means someone is lonely. Considering my own situation, where the person I used to gladly share every thought with stopped communicating because of my own wrong actions, the idea becomes more personal.</p>
-
-      <p>Wouldn't that mean heaven itself could become hell? Having everything apparently does not make us truly happy. What makes us eternally happy? I have no idea.</p>
-
-      <p>For now, happiness is temporary. No matter how great the thing you're experiencing is, the joy eventually fades. I'm saying this according to our current biological condition. There is always the possibility that future humans could alter their composition into forms capable of sustaining permanent happiness.</p>
-
-      <p>I constantly return to the same thought pattern: science changes everything. I detect a problem, I observe technological progress, then I project that progress millions of years forward and conclude that most current limitations may eventually be solved.</p>
-
-      <p>Since everything is composed of atoms and physics studies these structures, it seems logical that many present problems could become solvable. The current generation may never witness this, but possibility alone changes perception.</p>
-
-      <p>At times this even kills the joy of writing. It feels useless to share thoughts. Yet in reality, expression still has value. Pessimism cannot function as a sustainable way of life.</p>
-
-      <p>I still crave moments of happiness, even temporary ones. Multiplying those moments seems justified. No creature should become a barrier to another's path toward temporary happiness.</p>
-
-      <p>Controlling societies is difficult because people are different, yet humans still share enough similarities to be influenced collectively by centralized systems of ideas. That already happened long ago.</p>
-
-      <p>I think most systems of control emerge by claiming to solve shared human problems. One trait that strengthens those systems is the inability to observe reality from multiple perspectives.</p>
-
-      <p>Depending on a single source of ideas chains the mind to the owner of that source. Yet paradoxically, perhaps less awareness also means less suffering. The more conscious we become, the harder happiness becomes to sustain.</p>
-
-      <p>I often lose excitement after understanding something deeply. Consciousness removes novelty. If humanity continues indefinitely while existing inside a finite observable universe, perhaps we eventually approach collective exhaustion.</p>
-
-      <p>Curiosity keeps the wheel moving. Maybe the same wheel moves us toward self-destruction. Humans were tied to it from the beginning.</p>
-
-      <p>I prefer non-supernatural explanations. Natural processes shaped these traits. Reality may already be deterministic through chains of prior causes, while humans simply lack enough information-processing capacity to predict outcomes accurately.</p>
-
-      <p>Future generations may eventually solve that limitation too.</p>
-
-      <p>If I had to summarize the biggest barrier to temporary happiness in modern society, I would probably say loneliness. Many people experience it constantly.</p>
-
-      <p>Looking briefly into the life of someone receiving endless attention online quickly shows that validation alone cannot fill emotional emptiness.</p>
-
-      <p>I also think romanticizing complete isolation is often a coping mechanism. Humans appear fundamentally built for connection.</p>
-
-      <p>Dead ideas remain dead ideas unless humans continue giving them energy.</p>
-    `
-  }
-];
+    function fileSVG() {
+      return `<svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>`;
+    }
 
     function renderList() {
       const list = document.getElementById('articlesList');
-      list.innerHTML = articles.map((a, i) => `
-        <a class="article-card" href="#" onclick="showArticle(${a.id}); return false;">
-          <span class="article-num">0${i + 1}</span>
-          <div class="article-body">
-            <p class="article-tag">${a.tag}</p>
-            <h2 class="article-title">${a.title}</h2>
-            <p class="article-excerpt">${a.excerpt}</p>
+      list.innerHTML = articles.map((a, i) => {
+        if (a.comingSoon) {
+          return `
+            <div class="article-card coming-soon">
+              <span class="article-num">0${i + 1}</span>
+              <div class="article-body">
+                <p class="article-tag">${a.tag}</p>
+                <h2 class="article-title">${a.title}</h2>
+                <p class="article-excerpt">${a.excerpt}</p>
+                <span class="cs-badge">Coming soon</span>
+              </div>
+              <span class="article-arrow">→</span>
+            </div>`;
+        }
+        return `
+          <a class="article-card" href="#" onclick="showArticle(${a.id}); return false;">
+            <span class="article-num">0${i + 1}</span>
+            <div class="article-body">
+              <p class="article-tag">${a.tag}</p>
+              <h2 class="article-title">${a.title}</h2>
+              <p class="article-excerpt">${a.excerpt}</p>
+            </div>
+            <span class="article-arrow">→</span>
+          </a>`;
+      }).join('');
+    }
+
+    function renderCerts() {
+      const list = document.getElementById('certsList');
+      list.innerHTML = certificates.map(c => `
+        <a class="cert-row" href="${c.file}" target="_blank" rel="noopener">
+          <div class="cert-left">
+            <div class="cert-icon">${fileSVG()}</div>
+            <div>
+              <p class="cert-name">${c.name}</p>
+              <p class="cert-issuer">${c.issuer}</p>
+            </div>
           </div>
-          <span class="article-arrow">→</span>
+          <span class="cert-link-icon">↗</span>
         </a>
       `).join('');
     }
 
     function showArticle(id) {
       const a = articles.find(x => x.id === id);
-      if (!a) return;
+      if (!a || a.comingSoon) return;
       document.getElementById('pageTag').textContent = a.tag;
       document.getElementById('pageTitle').textContent = a.title;
-      document.getElementById('pageMeta').textContent = `By Thamer SASSI`;
+      document.getElementById('pageMeta').textContent = 'By Thamer SASSI';
       document.getElementById('pageContent').innerHTML = a.content;
       document.getElementById('homeView').classList.add('hidden');
       document.getElementById('articlePage').classList.add('active');
@@ -485,6 +711,7 @@
     }
 
     renderList();
+    renderCerts();
   </script>
 </body>
 </html>
