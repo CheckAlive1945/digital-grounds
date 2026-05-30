@@ -629,7 +629,7 @@
   title: "EU Digital Sovereignty",
   tag: "Politics and Digital Rights",
   excerpt: "Over 1.5 billion data points from EU citizens flow daily to foreign servers governed by US and Chinese law — not European law. GDPR exists, but it's not enough",
-  file: "certificates/your_file.pdf"
+  file: "certificates/pr.pdf"
 }
     ];
 
@@ -678,7 +678,8 @@
             </div>`;
         }
         return `
-          <a class="article-card" href="#" onclick="showArticle(${a.id}); return false;">
+        
+  <a class="article-card" href="#" onclick="${a.file ? `window.open('${a.file}', '_blank')` : `showArticle(${a.id})`}; return false;">
             <span class="article-num">0${i + 1}</span>
             <div class="article-body">
               <p class="article-tag">${a.tag}</p>
