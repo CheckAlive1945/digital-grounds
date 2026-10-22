@@ -87,6 +87,8 @@ nav a:hover{color:var(--accent)}
 .article-arrow{font-size:1.2rem;color:var(--accent);opacity:0;transform:translateX(-8px);transition:all .25s;padding-top:.35rem;align-self:center}
 
 /* CERTS */
+.cv-btn{display:inline-flex;align-items:center;gap:.6rem;margin-bottom:1.75rem;padding:.75rem 1.4rem;border:1px solid var(--accent);border-radius:6px;color:var(--accent);background:transparent;text-decoration:none;font-family:'IBM Plex Mono',monospace;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;transition:all .2s}
+.cv-btn:hover{background:var(--accent);color:var(--bg,#111)}
 .cert-row{display:flex;align-items:center;justify-content:space-between;gap:2rem;padding:1.75rem 0;border-bottom:1px solid var(--border);text-decoration:none;color:inherit}
 .cert-left{display:flex;align-items:center;gap:1.25rem}
 .cert-icon{width:40px;height:40px;border:1px solid var(--border);border-radius:6px;background:var(--surface);display:flex;align-items:center;justify-content:center;flex-shrink:0}
@@ -188,6 +190,7 @@ footer .logo{font-size:.75rem}
 
   <section class="certs-section" id="certs">
     <p class="section-label" data-i18n="certs_title"></p>
+    <a class="cv-btn" href="Thamer_SASSI_CV%20(1).pdf" target="_blank" rel="noopener"><span data-i18n="cv_btn"></span> ↗</a>
     <div class="certs-list" id="certsList"></div>
   </section>
 </div>
@@ -238,7 +241,7 @@ about3:"Outside of coursework I write — mostly as a way of thinking out loud. 
 branch_label:'Academic branch',
 branch:'Computer Science — Artificial Intelligence<br>Licence, Year 1<br>West University of Timișoara<br><br>Baccalauréat · Lycée Saint-Augustin<br>Annaba, Algeria<br><br>Volunteer · Red Crescent of Algeria<br>1 year<br><br>Volunteer · AIESEC Timișoara<br>1 year<br><br>Operator · Meteor Company<br>Car Production Parts · Arad, Romania<br>1 year',
 langs_label:'Languages',l_ar:'Arabic',l_he:'Hebrew',l_fr:'French',l_en:'English',l_ro:'Romanian',lv_n:'native',lv_f:'fluent',lv_b:'beginner',
-contact:'Contact',all_articles:'All articles',certs_title:'Certificates',back:'← Back to all articles',soon:'Coming soon',by:'By',note:'Full text available in English.'},
+contact:'Contact',all_articles:'All articles',certs_title:'Certificates',cv_btn:'View my CV',back:'← Back to all articles',soon:'Coming soon',by:'By',note:'Full text available in English.'},
 
 fr:{nav_about:'À propos',nav_articles:'Articles',nav_certs:'Certificats',label:'Portfolio & Écrits',
 hero:"Étudiant en informatique et IA à l'Université de l'Ouest de Timișoara. J'écris sur les droits numériques, la philosophie et la nature de la réalité simulée.",
@@ -249,7 +252,7 @@ about3:"En dehors des cours, j'écris — surtout pour penser à voix haute. Ces
 branch_label:'Parcours académique',
 branch:"Informatique — Intelligence artificielle<br>Licence, 1re année<br>Université de l'Ouest de Timișoara<br><br>Baccalauréat · Lycée Saint-Augustin<br>Annaba, Algérie<br><br>Bénévole · Croissant-Rouge algérien<br>1 an<br><br>Bénévole · AIESEC Timișoara<br>1 an<br><br>Opérateur · Meteor Company<br>Pièces automobiles · Arad, Roumanie<br>1 an",
 langs_label:'Langues',l_ar:'Arabe',l_he:'Hébreu',l_fr:'Français',l_en:'Anglais',l_ro:'Roumain',lv_n:'maternelle',lv_f:'courant',lv_b:'débutant',
-contact:'Contact',all_articles:'Tous les articles',certs_title:'Certificats',back:'← Retour à tous les articles',soon:'Bientôt disponible',by:'Par',note:"Texte intégral disponible en anglais."},
+contact:'Contact',all_articles:'Tous les articles',certs_title:'Certificats',cv_btn:'Voir mon CV',back:'← Retour à tous les articles',soon:'Bientôt disponible',by:'Par',note:"Texte intégral disponible en anglais."},
 
 he:{nav_about:'אודות',nav_articles:'מאמרים',nav_certs:'תעודות',label:'תיק עבודות וכתיבה',
 hero:'סטודנט למדעי המחשב ובינה מלאכותית באוניברסיטת המערב של טימישוארה. אני כותב על זכויות דיגיטליות, פילוסופיה וטבעה של מציאות מדומה.',
@@ -260,7 +263,7 @@ about3:'מחוץ ללימודים אני כותב — בעיקר כדי לחשו
 branch_label:'המסלול האקדמי',
 branch:'מדעי המחשב — בינה מלאכותית<br>תואר ראשון, שנה א׳<br>אוניברסיטת המערב של טימישוארה<br><br>בגרות · בית הספר סן-אוגוסטן<br>ענאבה, אלג׳יריה<br><br>מתנדב · חצי הסהר האדום האלג׳יראי<br>שנה אחת<br><br>מתנדב · AIESEC טימישוארה<br>שנה אחת<br><br>מפעיל · Meteor Company<br>חלקי רכב · ארד, רומניה<br>שנה אחת',
 langs_label:'שפות',l_ar:'ערבית',l_he:'עברית',l_fr:'צרפתית',l_en:'אנגלית',l_ro:'רומנית',lv_n:'שפת אם',lv_f:'שוטפת',lv_b:'מתחיל',
-contact:'יצירת קשר',all_articles:'כל המאמרים',certs_title:'תעודות',back:'→ חזרה לכל המאמרים',soon:'בקרוב',by:'מאת',note:'הטקסט המלא זמין באנגלית.'}
+contact:'יצירת קשר',all_articles:'כל המאמרים',certs_title:'תעודות',cv_btn:'צפייה בקורות החיים שלי',back:'→ חזרה לכל המאמרים',soon:'בקרוב',by:'מאת',note:'הטקסט המלא זמין באנגלית.'}
 };
 
 /* ───────── ARTICLES: [title, tag, excerpt] per language ───────── */
